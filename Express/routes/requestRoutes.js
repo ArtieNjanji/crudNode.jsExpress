@@ -2,14 +2,16 @@ const express = require('express')
 const controller = require('../controllers/requestController')
 const router = express.Router()
 
+const {protect} = require('../middleware/authMiddleware')
 
-router.get('/', controller.getRequests)
 
-router.post('/', controller.createRequests)
+router.get('/', protect, controller.getRequests)
 
-router.put('/:id', controller.updateRequests)
+router.post('/', protect, controller.createRequests)
 
-router.delete('/:id',controller.deleteRequests)
+router.put('/:id', protect, controller.updateRequests)
+
+router.delete('/:id' ,protect, controller.deleteRequests)
 
 module.exports = router
 
