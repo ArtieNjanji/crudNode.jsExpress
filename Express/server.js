@@ -1,7 +1,7 @@
 const express = require('express')
 const { errorHandler } = require('./middleware/errorMiddleware')
 const dotenv = require('dotenv').config()
-const connectDB = require('./config/mongodb')
+const connectDB = require('./config/mongodb') 
 
 
 connectDB()
@@ -12,6 +12,8 @@ app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 
 app.use('/api/requests', require('./routes/requestRoutes') )
+app.use('/api/users', require('./routes/userRoutes') )
+
 
 app.use(errorHandler)
 
