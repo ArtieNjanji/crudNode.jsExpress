@@ -1,11 +1,10 @@
-const { default: mongoose } = require('mongoose')
-const mongooge = require('mongoose')
+const mongoose = require('mongoose')
 
 
 const userSchema = mongoose.Schema({
     name:{
         type: String,
-        required: [true, 'FullName']
+        required: [true, 'Full Name']
     },
     email:{
         type: String,
