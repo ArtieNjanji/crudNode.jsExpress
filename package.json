@@ -4,10 +4,11 @@
   "description": "project1",
   "main": "server.js",
   "scripts": {
-    "start": "node Express/server",
-    "dev": "nodemon Express/server "
+    "start": "node Express/server.js",
+    "server": "nodemon Express/server.js ",
+    "client": "npm start --prefix frontend"
   },
-  "author": "",
+  "author": "Artie Njanji",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
