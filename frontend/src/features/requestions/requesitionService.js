@@ -52,7 +52,7 @@ const  requestService = {
     createRequest,
     getRequests,
     updateRequest,
-    deleteRequest
+    deleteRequest,
 }
 
 export default requestService

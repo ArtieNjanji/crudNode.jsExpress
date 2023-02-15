@@ -60,7 +60,7 @@ const Signin = () => {
         <p>Sign In to make a request</p>
       </div>
       <div className="form">
-        <form action="" onSubmit={onSubmit}>
+        <form onSubmit={onSubmit}>
           <div className="form-group">
             <input 
                 type="email" 

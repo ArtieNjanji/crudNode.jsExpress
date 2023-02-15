@@ -14,6 +14,7 @@ const Header = () => {
         dispatch(logout())
         dispatch(reset())
         navigate('/')
+        
     }
 
   return (

@@ -1,6 +1,7 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
 import requestService from './requesitionService'
 
+
 const initialState = {
     requests: [],
     isError: false,
@@ -51,7 +52,7 @@ async(id, thunkAPI) => {
             error.message || 
             error.toString()
     return thunkAPI.rejectWithValue(message)
-        
+
     }
 })
 
@@ -135,8 +136,8 @@ export const requestSlice = createSlice({
             state.message = action.payload
         })
     },
-}
-)
+})
+
 
 export const {reset} = requestSlice.actions
 export default requestSlice.reducer

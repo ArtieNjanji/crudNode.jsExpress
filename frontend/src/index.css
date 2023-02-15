@@ -50,6 +50,7 @@ h3 {
   padding: 20px 0;
   border-bottom: 1px solid #ff0000;
   margin-bottom: 60px;
+  cursor: pointer;
 }
 
 .header ul {

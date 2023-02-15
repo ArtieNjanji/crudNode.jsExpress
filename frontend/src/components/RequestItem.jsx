@@ -1,10 +1,20 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import {useNavigate} from 'react-router-dom'
 import {MdModeEditOutline} from 'react-icons/md'
-import { deleteRequest, updateRequest } from '../features/requestions/requesitionSlice'
+import { deleteRequest } from '../features/requestions/requesitionSlice'
 
 const RequestItem = ({request}) => {
+
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+
+    const onUpdateRequest = () => {
+      // dispatch(updateRequest(request._id))
+      navigate('/editrequest')
+
+    }
     
   return (
     <div className="request">
@@ -15,7 +25,7 @@ const RequestItem = ({request}) => {
             {request.text}
         </h2>
         <button className='close' onClick={() => dispatch(deleteRequest(request._id))}>X</button>
-        <button className='edit' onClick={() => dispatch(updateRequest(request._id))}><MdModeEditOutline/></button>
+        <button className='edit' onClick={onUpdateRequest}><MdModeEditOutline/></button>
     </div>
   )
 }
