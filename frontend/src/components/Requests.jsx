@@ -22,20 +22,21 @@ const Requests = () => {
     <div className="form">
         <form onSubmit={onSubmit}>
             <div className="form-group">
-                <label htmlFor="text">Requesition</label>
-                <input 
+                <label htmlFor="text">Make a Request</label>
+                <textarea 
                     type="text" 
                     name='text' 
                     id = 'text' 
                     value = {text}
                     onChange = {(e) => setText(e.target.value)}
-                    />
+                    >
+                </textarea>
             </div>
-            <form-group>
+            <div className="form-group">
                 <button className="btn btn-block">
                     Add Request
                 </button>
-            </form-group>
+            </div>
         </form>
     </div>
     </>

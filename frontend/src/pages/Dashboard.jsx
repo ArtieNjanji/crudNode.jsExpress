@@ -5,8 +5,8 @@ import {useNavigate} from 'react-router-dom'
 
 import Spinner from '../components/Spinner'
 import Requests from '../components/Requests'
-import { getRequests, reset } from '../features/requestions/requesitionSlice'
 import RequestItem from '../components/RequestItem'
+import { getRequests, reset } from '../features/requestions/requesitionSlice'
 
 
 const Dashboard = () => {
@@ -17,11 +17,11 @@ const Dashboard = () => {
   const {requests, isLoading, isError, message} = useSelector((state) => 
     state.requests)
   
-
   useEffect(() => {
     if(isError){
       console.log(message)
     }
+
     if(!user){
       navigate('/signin')
     }
@@ -34,7 +34,7 @@ const Dashboard = () => {
   }, [user, navigate, isError, message, dispatch])
 
   if(isLoading){
-    return <Spinner/>
+    return <Spinner />
   }
 
   return (
@@ -43,19 +43,20 @@ const Dashboard = () => {
       <h1>
         Welcome {user && user.name}
       </h1>
+      <p>Requests DashBoard</p>
     </div>
-    <Requests/>
     <div className="content">
       {
         requests.length > 0 ? (
-          <div className="goals">
+          <div className="requests">
             {requests.map((request) =>(
-              <RequestItem key={request.id} request = {request}/>
+              <RequestItem key={request._id} request = {request}/>
             ))}
           </div>
         ) : ( <h3> You have not requested anything yet</h3> )
       }
     </div>
+    <Requests />
   </>
   )
 }

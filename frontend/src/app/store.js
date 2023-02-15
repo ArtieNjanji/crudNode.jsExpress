@@ -7,6 +7,6 @@ import requestReducer from '../features/requestions/requesitionSlice'
 export const store = configureStore({
   reducer: {
       auth: authReducer,
-      requests: requestReducer
+      requests: requestReducer,
   },
 });

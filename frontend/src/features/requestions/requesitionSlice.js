@@ -13,7 +13,7 @@ export const createRequest = createAsyncThunk('requests/create',
 async(requestData, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token
-        return await requestService.createRequests(requestData, token)
+        return await requestService.createRequest(requestData, token)
     } catch (error) {
         const message = (error.response &&  
             error.response.data && 
@@ -38,7 +38,7 @@ async(_, thunkAPI) => {
     return thunkAPI.rejectWithValue(message)
     }
 })
-/*
+
 export const updateRequest = createAsyncThunk('requests/update',
 async(id, thunkAPI) => {
     try {
@@ -54,14 +54,14 @@ async(id, thunkAPI) => {
         
     }
 })
-*/
+
 
 // delete
 export const deleteRequest = createAsyncThunk('requests/delete',
 async(id, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token
-        return await requestService.deleteSlice(id,token)
+        return await requestService.deleteRequest(id,token)
     } catch (error) {
         const message = (error.response && 
             error.response.data && 
@@ -82,10 +82,10 @@ export const requestSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-        .addCase(createRequest.pending, (state) =>{
+        .addCase(createRequest.pending, (state) => {
             state.isLoading = true
         })
-        .addCase(createRequest.fulfilled, (state, action) =>{
+        .addCase(createRequest.fulfilled, (state, action) => { 
             state.isLoading = false
             state.isSuccess = true
             state.requests.push(action.payload)
@@ -108,19 +108,19 @@ export const requestSlice = createSlice({
             state.isError = true
             state.message = action.payload
         })
-/**     .addCase(updateRequests.pending, (state) =>{
+         .addCase(updateRequest.pending, (state) =>{
             state.isLoading = true
         })
-        .addCase(updateRequests.fulfilled, (state, action) =>{
+        .addCase(updateRequest.fulfilled, (state, action) =>{
             state.isLoading = false
             state.isSuccess = true
-            state.requests = state.requests.filter((reaquest) => request._id !== action.payload.id )
+            state.requests = state.requests.filter((request) => request._id !== action.payload.id )
         })
-        .addCase(updateRequests.rejected, (state, action) => {
+        .addCase(updateRequest.rejected, (state, action) => {
             state.isLoading = false
             state.isError = true
             state.message = action.payload
-        }) */
+        }) 
         .addCase(deleteRequest.pending, (state) =>{
             state.isLoading = true
         })
