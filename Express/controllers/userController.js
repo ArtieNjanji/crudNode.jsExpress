@@ -13,12 +13,11 @@ const registerUser = asyncHandler(async (req, res) => {
         // res.status(400)
         throw new Error ('Please fill all fields')
     }
-
-// check if user already exits
+ // check if user already exits
     const userExits = await User.findOne({email})
 
     if(userExits)  {
-
+        res.status(400)
         throw new Error('User with same email exits')
     }
     // encrypt user passwords(using bcryptjs)
@@ -44,17 +43,18 @@ const registerUser = asyncHandler(async (req, res) => {
         })
     }else {
         res.status(400)
-        throw new Error('Invalid')
+        throw new Error('Invalid User')
     }
-        res.json({message: 'usergistered !!'})
+        res.json({message: 'user registered !!'})
 })
 
 // log in user functionality
-const SignInUser = asyncHandler(async (req, res) => {
+const signInUser = asyncHandler(async (req, res) => {
     const {email, password} = req.body
 
     const user = await User.findOne({email})
 
+    // compare user details in the database and thosed when signing in 
     if(user && (await bcrypt.compare(password, user.password))) //decrypting password in the database and compare it to the password entered on sign in
     {
         res.json({
@@ -68,7 +68,7 @@ const SignInUser = asyncHandler(async (req, res) => {
     }
     else {
         res.status(400)
-        throw new Error('email and password does not match')
+        throw new Error('Email and password does not match')
     }
 
 
@@ -90,14 +90,14 @@ const getUserData = asyncHandler(async (req, res) => {
 
 const generateToken = (id) => {
     return jwt.sign({id}, process.env.JWT_SECRET, {
-        expiresIn: '20d'
+        expiresIn: '1d'
     })
 }
 
 
 module.exports = {
     registerUser,
-    SignInUser,
+    signInUser,
     getUserData
 
 }

@@ -8,6 +8,7 @@ const protect = asyncHandler(async(req, res, next) => {
     if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
         try{
             token = req.headers.authorization.split(' ')[1]
+            
             // verify token
             const decoded = jwt.verify(token, process.env.JWT_SECRET)
 
@@ -25,7 +26,5 @@ const protect = asyncHandler(async(req, res, next) => {
         throw new Error('Not Authorised')
     }
 })
-
-
-
+    
 module.exports = { protect }

@@ -6,8 +6,13 @@ const User = require('../models/userModel')
 const getRequests = asyncHandler(async (req, res) => {
     const requests = await Request.find({user: req.user.id})
 
-    // res.json({message: 'get requests'})
     res.json(requests)
+})
+
+
+
+const getAllRequests = asyncHandler(async (req, res) => {
+    const requests = await Requests.find({})
 })
 
 // handles the create request from the client-side
@@ -32,7 +37,7 @@ const updateRequests = asyncHandler(async (req, res) => {
 
     if(!request){
         res.status(400)
-        throw new Error('Request does nt exist')
+        throw new Error('No such request')
     }
 
     const user = await User.findById(req.user.id)
@@ -65,6 +70,7 @@ const deleteRequests = asyncHandler(async (req, res) => {
         res.status(400)
         throw new Error('Request does not exist')
     }
+    
     const user = await User.findById(req.user.id)
 
     // check for user
@@ -87,5 +93,6 @@ module.exports = {
     getRequests,
     createRequests,
     updateRequests,
-    deleteRequests 
+    deleteRequests,
+    getAllRequests
 }

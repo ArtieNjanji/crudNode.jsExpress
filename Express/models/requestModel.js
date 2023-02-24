@@ -7,7 +7,6 @@ const requestSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         refrence: 'User'
-
     },
     text:{
         type: String,

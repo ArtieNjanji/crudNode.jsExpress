@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node Express/server.js",
     "server": "nodemon Express/server.js ",
-    "client": "npm start --prefix frontend",
+    "client": "npm start --prefix an_app",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Artie Njanji",
